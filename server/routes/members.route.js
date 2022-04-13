@@ -64,7 +64,7 @@ router
 
     members.splice(memberIndex, 1)
     saveMembers(members)
-    res.send({ success: true, msg: 'removed member' })
+    res.send({ success: true, msg: 'Member was removed' })
   })
 
 // functions for getting/saving data from json file
