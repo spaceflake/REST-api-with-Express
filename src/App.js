@@ -68,7 +68,9 @@ const App = () => {
       })
       const resData = await res.json()
       if (resData.success) {
-        toast.success(resData.msg)
+        toast.success(resData.msg, {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        })
       }
       await fetchMembers()
     } catch (error) {
@@ -97,7 +99,9 @@ const App = () => {
       const res = await fetch(url, requestOptions)
       const resData = await res.json()
       if (resData.success) {
-        toast.success(resData.msg)
+        toast.success(resData.msg, {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        })
       }
       await fetchMembers()
       setEditing(false)
