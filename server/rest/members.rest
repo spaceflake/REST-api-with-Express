@@ -1,0 +1,30 @@
+GET http://localhost:4000/api/members
+
+###
+
+GET http://localhost:4000/api/members/2
+
+###
+
+POST http://localhost:4000/api/members
+Content-Type: application/json
+
+{
+  "name": "tomas",
+  "age": "34"
+}
+
+###
+
+PUT  http://localhost:4000/api/members
+Content-Type: application/json
+
+{
+  "id" : 5,
+  "name": "prutt",
+  "age": "45"
+}
+
+###
+
+DELETE  http://localhost:4000/api/members/3
