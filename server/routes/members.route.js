@@ -36,7 +36,6 @@ router
     res.send({ success: true, msg: 'A new member was added' })
   })
   .put('/', (req, res) => {
-    // const id = parseInt(req.params.id)
     const memberData = req.body
     const members = getMembers()
 

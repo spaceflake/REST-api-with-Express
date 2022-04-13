@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
+import { ToastContainer, toast } from 'react-toastify'
 import Header from './components/Header'
 import List from './components/List'
 import Form from './components/Form'
+import 'react-toastify/dist/ReactToastify.css'
 import './css/App.css'
 
 const App = () => {
@@ -61,9 +63,13 @@ const App = () => {
     try {
       const id = e.target.dataset.id
 
-      await fetch(`http://localhost:4000/api/members/${id}`, {
+      const res = await fetch(`http://localhost:4000/api/members/${id}`, {
         method: 'DELETE',
       })
+      const resData = await res.json()
+      if (resData.success) {
+        toast.success(resData.msg)
+      }
       await fetchMembers()
     } catch (error) {
       console.error(error)
@@ -88,9 +94,11 @@ const App = () => {
           body: JSON.stringify(inputs),
         }
       }
-      await fetch(url, requestOptions)
-        .then((response) => response.json())
-        .catch((error) => console.log('Form submit error', error))
+      const res = await fetch(url, requestOptions)
+      const resData = await res.json()
+      if (resData.success) {
+        toast.success(resData.msg)
+      }
       await fetchMembers()
       setEditing(false)
       setInputs({})
@@ -106,6 +114,7 @@ const App = () => {
       <Header />
 
       <div className="container">
+        <ToastContainer theme="dark" />
         <List {...{ memberList, handleEdit, deleteMember }} />
         <Form
           {...{
