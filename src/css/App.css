@@ -30,48 +30,89 @@
   color: #61dafb;
 }
 
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  width: min(100% - 2rem, 70rem);
+  margin-inline: auto;
+}
+
 .wrapper {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  padding: 1rem;
   margin-inline: auto;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
 }
 
 .card {
   background-color: #191b20;
   padding: 1rem;
   border-radius: 1rem;
+  /* width: min(100%, 30rem); */
+  text-align: left;
+}
+
+.btn-group {
+  display: flex;
+  gap: 1rem;
+}
+
+.editBorder {
+  border: 1px solid #deed0f;
+}
+
+.form-container {
+  display: flex;
+  align-self: flex-start;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  width: min(100% - 2rem, 30rem);
-  margin-inline: auto;
   text-align: left;
   background-color: #191b20;
   padding-inline: 2rem;
   padding-bottom: 2rem;
   border-radius: 1rem;
-  margin-top: 4rem;
+  width: 100%;
 }
 
-.form input {
-  max-width: 50%;
+.form label {
+  margin-bottom: 0.25rem;
 }
 
 .form input:last-of-type {
   margin-bottom: 2rem;
 }
 
-.form button {
+.btn {
   max-width: min-content;
   border: none;
-  padding: 1rem 1.5rem;
+  padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;
-  background-color: #282c34;
+  background-color: #22355c;
+  opacity: 75%;
   color: white;
+}
+
+.btn:hover {
+  opacity: 100%;
+  cursor: pointer;
+}
+
+.btn.secondary {
+  background-color: #d74611;
 }
 
 @keyframes App-logo-spin {
