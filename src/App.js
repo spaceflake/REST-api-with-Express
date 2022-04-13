@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import Header from './components/Header'
+import List from './components/List'
+import Form from './components/Form'
 import './css/App.css'
 
 const App = () => {
@@ -104,77 +106,20 @@ const App = () => {
       <Header />
 
       <div className="container">
-        <div>
-          <ul className="list">
-            {memberList?.length > 0 ? (
-              memberList.map((member) => (
-                <li id={member.id} className="card" key={member.id}>
-                  <p className="card_title">Name: {member.name}</p>
-                  <p>Age: {member.age}</p>
-                  <div className="btn-group">
-                    <button
-                      className="btn"
-                      onClick={handleEdit}
-                      data-id={member.id}
-                    >
-                      update
-                    </button>
-                    <button
-                      className="btn secondary"
-                      onClick={deleteMember}
-                      data-id={member.id}
-                    >
-                      delete
-                    </button>
-                  </div>
-                </li>
-              ))
-            ) : (
-              <p>No members yet. Let's create one...</p>
-            )}
-          </ul>
-        </div>
-        <div className="form-container">
-          <form className="form" onSubmit={handleSubmit}>
-            {!editing ? <h1>Add Member</h1> : <h1>Update Member</h1>}
-            <label htmlFor="name">Name: </label>
-            <input
-              type="text"
-              name="name"
-              value={inputs.name || ''}
-              onChange={handleChange}
-              id="name"
-              required
-            />
-            <label htmlFor="age">Age: </label>
-            <input
-              type="number"
-              name="age"
-              value={inputs.age || ''}
-              onChange={handleChange}
-              id="age"
-              required
-            />
-            <div className="btn-group">
-              <button type="submit" className="btn">
-                Submit
-              </button>
-              {editing && (
-                <button
-                  onClick={() => {
-                    setEditing(false)
-                    setInputs({})
-                    setSelected(false)
-                    toggleBorder(selectedId)
-                  }}
-                  className="btn secondary"
-                >
-                  Cancel
-                </button>
-              )}
-            </div>
-          </form>
-        </div>
+        <List {...{ memberList, handleEdit, deleteMember }} />
+        <Form
+          {...{
+            handleSubmit,
+            editing,
+            inputs,
+            handleChange,
+            setEditing,
+            setInputs,
+            setSelected,
+            toggleBorder,
+            selectedId,
+          }}
+        />
       </div>
     </div>
   )
