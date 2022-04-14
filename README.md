@@ -22,7 +22,8 @@ For the front I used create-react-app.
 
 ## Running the project
 
-Clone or download repo
+Clone or download
+[repo](https://github.com/spaceflake/REST-api-with-Express)
 
 In the project directory, you can run:
 
