@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import Header from './components/Header'
 import List from './components/List'
 import Form from './components/Form'
+import Footer from './components/Footer'
 import 'react-toastify/dist/ReactToastify.css'
 import './css/App.css'
 
@@ -12,6 +13,11 @@ const App = () => {
   const [editing, setEditing] = useState(false)
   const [selected, setSelected] = useState(false)
   const [selectedId, setSelectedId] = useState()
+  const formRef = useRef()
+
+  const scrollToView = () => {
+    formRef.current.scrollIntoView({ behavior: 'smooth' })
+  }
 
   const handleChange = (e) => {
     const name = e.target.name
@@ -54,6 +60,7 @@ const App = () => {
       setSelected(true)
       setSelectedId(id)
       toggleBorder(id)
+      scrollToView()
     } catch (error) {
       console.log(error)
     }
@@ -131,9 +138,11 @@ const App = () => {
             setSelected,
             toggleBorder,
             selectedId,
+            formRef,
           }}
         />
       </div>
+      <Footer />
     </div>
   )
 }

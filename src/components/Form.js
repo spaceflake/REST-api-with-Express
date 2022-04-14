@@ -10,9 +10,13 @@ function Form({
   setSelected,
   toggleBorder,
   selectedId,
+  formRef,
 }) {
   return (
-    <div className="form-container animate__animated animate__fadeInRight animate__delay-1s">
+    <div
+      className="form-container animate__animated animate__fadeInRight animate__delay-1s"
+      ref={formRef}
+    >
       <form className="form" onSubmit={handleSubmit}>
         {!editing ? <h1>Add Member</h1> : <h1>Update Member</h1>}
         <label htmlFor="name">Name: </label>
@@ -27,6 +31,8 @@ function Form({
         <label htmlFor="age">Age: </label>
         <input
           type="number"
+          min="15"
+          max="100"
           name="age"
           value={inputs.age || ''}
           onChange={handleChange}
