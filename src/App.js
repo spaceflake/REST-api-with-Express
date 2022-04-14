@@ -20,9 +20,9 @@ const App = () => {
   }
   const fetchMembers = async () => {
     try {
-      const members = await fetch('/api/members').then((res) => res.json())
-
-      setMemberList(members)
+      const res = await fetch('http://localhost:4000/api/members')
+      const result = await res.json()
+      setMemberList(result)
     } catch (error) {
       console.error(error)
     }
@@ -116,9 +116,9 @@ const App = () => {
   return (
     <div className="App">
       <Header />
-
+      <h2>All current members</h2>
+      <ToastContainer theme="dark" />
       <div className="container">
-        <ToastContainer theme="dark" />
         <List {...{ memberList, handleEdit, deleteMember }} />
         <Form
           {...{

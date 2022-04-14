@@ -1,9 +1,12 @@
+import 'animate.css'
+
 function Header() {
   return (
-    <header className="App-header">
-      <h1>Welcome to your community book!</h1>
+    <header className="App-header ">
+      <h1 className="animate__animated animate__fadeInDown">
+        Welcome to your community book!
+      </h1>
       <p>Keep track of all your members. Add, edit and delete.</p>
-      <h2>All current members</h2>
     </header>
   )
 }

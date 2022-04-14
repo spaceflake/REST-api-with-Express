@@ -1,3 +1,5 @@
+import 'animate.css'
+
 function Form({
   handleSubmit,
   editing,
@@ -10,7 +12,7 @@ function Form({
   selectedId,
 }) {
   return (
-    <div className="form-container">
+    <div className="form-container animate__animated animate__fadeInRight animate__delay-1s">
       <form className="form" onSubmit={handleSubmit}>
         {!editing ? <h1>Add Member</h1> : <h1>Update Member</h1>}
         <label htmlFor="name">Name: </label>
