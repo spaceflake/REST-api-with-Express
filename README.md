@@ -20,6 +20,21 @@ For the front I used create-react-app.
 
 ---
 
+Krav för godkänt:  
+&check; 1.Projektet innehåller minst 4 st. endpoints (GET, POST, PUT & DELETE för en resurs)  
+&check; 2.Samtliga endpoints skall kunna nås via en REST Client fil (.rest|.http)  
+&check; 3.Datan som API:et hanterar sparas lokalt i serverfilen  
+&check; 4.APIét ska svara med 404 om datan saknas.  
+&check; 5.Git & GitHub har använts  
+&check; 6.Projektmappen innehåller en README.md fil - (läs ovan för mer info)  
+&check; 7.Uppgiften lämnas in i tid!  
+Krav för väl godkänt:  
+&check; 1.Alla punkter för godkänt är uppfyllda  
+&check; 2.All data skall vara sparad i en JSON-fil istället för i serverfilen  
+&check; 3.Datan i JSON-filen skall uppdateras då något läggs till, uppdateras eller tas bort  
+&check; 4.Ett klient-gränssnitt skall byggas för att anropa API:ets alla olika endpoints och presentera datan, redigeringsformulär skall fyllas i med befintlig information.  
+&check; 5.Ytterligare en GET endpoint skall läggas till där det går att hämta ett specifikt objekt
+
 ## Running the project
 
 Clone or download
