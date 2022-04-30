@@ -1,5 +1,6 @@
 const express = require('express')
 const fs = require('fs')
+const { nanoid } = require('nanoid')
 
 const router = express.Router()
 
@@ -9,10 +10,10 @@ router
     res.json(members)
   })
   .get('/:id', (req, res) => {
-    const id = parseInt(req.params.id)
+    const { id } = req.params
     const members = getMembers()
 
-    const foundMember = members.find((hero) => hero.id === id)
+    const foundMember = members.find((member) => member.id === id)
     if (!foundMember) {
       return res
         .status(404)
@@ -27,7 +28,7 @@ router
     const members = getMembers()
 
     const newMember = {
-      id: members.length + 1,
+      id: nanoid(),
       ...req.body,
     }
 
@@ -54,7 +55,7 @@ router
     res.send({ success: true, msg: 'Member updated' })
   })
   .delete('/:id', (req, res) => {
-    const id = parseInt(req.params.id)
+    const { id } = req.params
     const members = getMembers()
 
     const memberIndex = members.findIndex((member) => member.id === id)
