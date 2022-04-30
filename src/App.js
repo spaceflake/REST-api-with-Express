@@ -11,11 +11,10 @@ const App = () => {
   const [memberList, setMemberList] = useState([])
   const [inputs, setInputs] = useState({})
   const [editing, setEditing] = useState(false)
-  const [selected, setSelected] = useState(false)
-  const [selectedId, setSelectedId] = useState()
+  const [selectedId, setSelectedId] = useState(null)
   const formRef = useRef()
 
-  const scrollToView = () => {
+  const scrollToForm = () => {
     formRef.current.scrollIntoView({ behavior: 'smooth' })
   }
 
@@ -41,14 +40,6 @@ const App = () => {
     fetchData()
   }, [])
 
-  const toggleBorder = (id) => {
-    if (selected) {
-      document.getElementById(id).classList.remove('editBorder')
-    } else {
-      document.getElementById(id).classList.add('editBorder')
-    }
-  }
-
   const handleEdit = async (e) => {
     try {
       const id = e.target.dataset.id
@@ -56,16 +47,13 @@ const App = () => {
       const res = await fetch(url)
       const result = await res.json()
       setInputs(result)
+      scrollToForm()
       setEditing(true)
-      setSelected(true)
       setSelectedId(id)
-      toggleBorder(id)
-      scrollToView()
     } catch (error) {
       console.log(error)
     }
   }
-
   const deleteMember = async (e) => {
     try {
       const id = e.target.dataset.id
@@ -96,6 +84,8 @@ const App = () => {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(inputs),
         }
+        setEditing(false)
+        setSelectedId(null)
       } else {
         requestOptions = {
           method: 'POST',
@@ -113,8 +103,6 @@ const App = () => {
       await fetchMembers()
       setEditing(false)
       setInputs({})
-      setSelected(false)
-      toggleBorder(selectedId)
     } catch (error) {
       console.error(error)
     }
@@ -126,7 +114,14 @@ const App = () => {
       <h2>All current members</h2>
       <ToastContainer theme="dark" />
       <div className="container">
-        <List {...{ memberList, handleEdit, deleteMember }} />
+        <List
+          {...{
+            memberList,
+            handleEdit,
+            deleteMember,
+            selectedId,
+          }}
+        />
         <Form
           {...{
             handleSubmit,
@@ -135,9 +130,8 @@ const App = () => {
             handleChange,
             setEditing,
             setInputs,
-            setSelected,
-            toggleBorder,
             selectedId,
+            setSelectedId,
             formRef,
           }}
         />

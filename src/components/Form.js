@@ -7,9 +7,7 @@ function Form({
   handleChange,
   setEditing,
   setInputs,
-  setSelected,
-  toggleBorder,
-  selectedId,
+  setSelectedId,
   formRef,
 }) {
   return (
@@ -23,7 +21,7 @@ function Form({
         <input
           type="text"
           name="name"
-          value={inputs.name || ''}
+          value={inputs?.name || ''}
           onChange={handleChange}
           id="name"
           required
@@ -34,7 +32,7 @@ function Form({
           min="15"
           max="100"
           name="age"
-          value={inputs.age || ''}
+          value={inputs?.age || ''}
           onChange={handleChange}
           id="age"
           required
@@ -48,8 +46,7 @@ function Form({
               onClick={() => {
                 setEditing(false)
                 setInputs({})
-                setSelected(false)
-                toggleBorder(selectedId)
+                setSelectedId(null)
               }}
               className="btn secondary"
             >
