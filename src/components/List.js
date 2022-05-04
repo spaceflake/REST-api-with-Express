@@ -1,4 +1,3 @@
-import 'animate.css'
 import ListItem from './ListItem'
 
 function List({ memberList, handleEdit, deleteMember, selectedId }) {

@@ -1,3 +1,5 @@
+import 'animate.css'
+
 function ListItem({ member, handleEdit, deleteMember, selectedId }) {
   return (
     <li
